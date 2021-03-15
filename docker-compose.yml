@@ -1,0 +1,36 @@
+version: '3'
+services:
+  alfa:
+    build: ./image
+    image: spread:5.0.1
+    command:
+     - "bash"
+     - "-c"
+     - "spread -n alfa & exec socat TCP4-LISTEN:5000,reuseaddr,fork TCP4:localhost:4803"
+    volumes:
+     - "./spread.conf:/spread.conf"
+    ports:
+     - "4803:5000"
+
+  bravo:
+    image: spread:5.0.1
+    command:
+     - "bash"
+     - "-c"
+     - "spread -n bravo & exec socat TCP4-LISTEN:5000,reuseaddr,fork TCP4:localhost:4803"
+    volumes:
+     - "./spread.conf:/spread.conf"
+    ports:
+     - "4804:5000"
+
+  charlie:
+    image: spread:5.0.1
+    command:
+     - "bash"
+     - "-c"
+     - "spread -n charlie & exec socat TCP4-LISTEN:5000,reuseaddr,fork TCP4:localhost:4803"
+    volumes:
+     - "./spread.conf:/spread.conf"
+    ports:
+     - "4805:5000"
+
