@@ -90,6 +90,21 @@ and used with the following dependency:
         <version>5.0.1</version>
     </dependency>
 
+## Simulating network partitions
+
+The Docker network can be partitioned to simulated network faults.
+To disconnect host *charlie*:
+
+	$ ./dnu.sh disconnect charlie
+
+To query current status of all hosts:
+
+	$ ./dnu.sh status alfa bravo charlie
+
+To reconnect a hosts *bravo* and *charlie*:
+
+	$ ./dnu.sh connect bravo charlie
+
 ## Documentation
 
 Man pages for Spread C API are available in running containers, for instance:
